@@ -43,6 +43,7 @@ class Browser
 
   # Set browser's UA string.
   attr_accessor :user_agent
+  attr_reader :width
   alias_method :ua, :user_agent
   alias_method :ua=, :user_agent=
 
@@ -115,6 +116,7 @@ class Browser
   def initialize(options = {}, &block)
     self.user_agent = (options[:user_agent] || options[:ua]).to_s
     self.accept_language = options[:accept_language].to_s
+    @width = options[:width].present? ? options[:width].to_i : nil
 
     yield self if block
   end
