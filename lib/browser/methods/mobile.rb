@@ -2,6 +2,10 @@ class Browser
   module Mobile
     # Detect if browser is mobile.
     def mobile?
+      if self.width.present? && self.width < 1200
+        return true
+      end
+
       detect_mobile? && !tablet?
     end
 
