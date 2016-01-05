@@ -21,6 +21,10 @@ class Browser
 
     # Detect if browser is tablet (currently iPad, Android, Surface or Playbook).
     def tablet?
+      if self.width.present? && self.width < 1200
+        return true
+      end
+      
       !!(ipad? || (android? && !detect_mobile?) || surface? || playbook?)
     end
 
